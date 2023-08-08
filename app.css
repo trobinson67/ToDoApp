@@ -1,0 +1,9 @@
+h1 {
+    text-align: center;
+
+ }
+
+ .finished{
+    text-decoration: line-through;
+    color: red;
+ }
