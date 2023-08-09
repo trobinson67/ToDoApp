@@ -3,12 +3,25 @@ let taskInput = document.querySelector("#task-input");
 let taskList = document.querySelector('#task') // this is the UL
 let savedTask = []
 
+
+// Loads Local storage at page load
 window.addEventListener('load',function(e){
-    JSON.parse(localStorage.getItem("savedTask"))
-    for(let a = 0; a < task.length; a++){
-        //taskList.append(task[a])
-        console.log(a)
+    console.log('Page is loaded')
+    for( let a = 0; a < localStorage.length; a++){
+        let taskSaved = (JSON.parse(localStorage.getItem('savedTask'))) // pulls local storage as an array
+        for(let task of taskSaved){ //loops through the array to get indivdual strings
+            console.log(task) 
+            let savedLi = document.createElement('li')
+            savedLi.innerText = task
+            let btn = document.createElement('button');
+            btn.innerText = "delete";
+            savedLi.appendChild(btn)
+            taskList.append(savedLi) 
+        }
+       
     }
+    
+    
 })
 //EVENT LISTENER TO REMOVE TASK VIA THE DELETE BUTTON
 taskList.addEventListener('click', function(e){
